@@ -1,5 +1,5 @@
-let firstCard = 12;
-let secondCard = 1;
+let firstCard = getRandomCard();
+let secondCard = getRandomCard();
 let cards = [firstCard, secondCard];
 let sum = firstCard + secondCard;
 let hasBlackJack = false;
@@ -12,15 +12,28 @@ let sumEl = document.getElementById("sum-el")
 
 let cardsEl = document.getElementById("card-el")
 
+function getRandomCard() {
+        let random = Math.floor(Math.random()*10)
+        return random;
+}
 
+
+function startGame() {
+        renderGame()
+}
 
 
 
 function renderGame() {
-sumEl.textContent = "sum : " + sum;
-cardsEl.textContent= "cards: " + cards[0] +" "+ cards[];
 
-    if (sum < 21) {
+cardsEl.textContent = "cards: "
+    for (let i = 0; i < cards.length; i++){
+        cardsEl.textContent += cards[i] +" "        
+        }
+        
+sumEl.textContent = "sum : " + sum;
+
+if (sum < 21) {
         massage = "Do you want to draw a new card?"
         
 } else if(sum === 21){
@@ -32,13 +45,13 @@ cardsEl.textContent= "cards: " + cards[0] +" "+ cards[];
 }
     messageEl.textContent = massage;
 }
-function startGame() {
-        renderGame();
-}
+
 
 function newcard() {
        //console.log("Drawing new card from the deck");
-        let card = 9;
-        sum += card;
+        let card = getRandomCard();
+         sum += card;
+        cards.push(card)
+       
         renderGame();
-}
+} 
